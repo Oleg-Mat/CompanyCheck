@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {{!-- <link rel='stylesheet' href='views/stylesheets/style.css' /> --}}
+    <script defer src="/js/application.js"></script>
+    <style>
+      body{
+
+   
+        background-image: url('http://fullhdwallpapers.ru/image/city/1789/moskva-nochyu.jpg')
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <ul class="nav navbar bg-dark justify-content-end">
+      <li class="nav-item"><a class="nav-link" href="/companys">Home</a></li>
+  {{#if notlogged}}
+  <li class="nav-item">
+    <a class="nav-link danger" href="/login">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link danger" href="/api">Api</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/registration">Register</a>
+  </li>
+  {{else}}
+  <li class="nav-item">
+    <a class="nav-link" href="/companys">Companys</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/questions">Questions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/blacklist">BlackList</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="/logout">Logout</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/users/profile/{{currentUser}}">{{ currentUser}}</a>
+  </li>
+</ul>
+  {{/if}}
+  <li class="nav-item">
+    <a class="nav-link">{{currentUser}}</a>
+  </li>
+</ul>
+    {{{body}}}
+  </body>
+</html>

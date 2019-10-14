@@ -1,0 +1,23 @@
+<h3 class="mt-2">Profile</h3>
+
+<ul class="list-group col-3">
+    <li class="list-group-item list-group-item-secondary"> Name : {{user.name}}</li>
+     <li class="list-group-item list-group-item-secondary"> Email: {{user.email}}</li>
+    {{!-- <li> <a href="channel/{{name}}">{{name}}</a> </li> --}}
+   <li class="nav-item">
+    <a class="nav-link" href="/users/profile/auction/{{user.name}}">Add Auction</a>
+  </li> 
+ 
+</ul>
+<h3 class="mt-2">My Auctions</h3>
+<ul class="list-group col-3">
+    {{#each auctions}}
+    <li class="list-group-item list-group-item-secondary">
+       {{name}}
+      <a class="nav-link" href="/users/edit/{{name}}">Edit Auction</a>
+      <a class="nav-link" href="/users/delete/{{name}}">Delete</a>
+     </li>
+    {{/each}}
+    {{!-- <li> <a href="channel/{{name}}">{{name}}</a> </li> --}}
+</ul>
+

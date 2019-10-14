@@ -1,0 +1,18 @@
+<h3 class="mt-2">AUCTION!<h3>
+
+{{!-- <link rel="stylesheet" href="/css/style.css"> --}}
+
+<form name="new-auction" method="POST">
+  <input name="itemname" type="text" placeholder="itemname" value ={{data.name}}>
+   <select name="Condition" value = {{data.conditions}}>
+    <option>Fair</option>
+    <option>NotFair</option>
+    <option>Xz</option>
+  </select>
+  <input name="datestart" type="date" placeholder="datestart" value ={{data.startdate}}>
+  <input name="dateend" type="date" placeholder="datestart" value ={{data.enddate}}>
+  <input name="description" type="text" placeholder="description" value ={{data.description}}>
+  <button> Add auction </button>
+</form>
+
+{{!-- <script src="/js/script.js"></script> --}}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="api">
+
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+
+            height: 70vh;
+            margin-right: 0 2%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            margin: 0 2%;
+        }
+
+        .wrap ul li {
+            padding: 10px 30px;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+
+
+        }
+     .wrap a {
+            text-decoration: none;
+            padding: 10px 30px;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+        }
+
+
+        .list-group-item-secondary:hover {
+            color: white;
+            background-color:#707986;
+        }
+        /*
+    
+    .wrap ul li {
+     
+      height: calc(70vh/8) ;
+      когда хочу выровнять элементы с картой
+     */
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3 class="mt-2">BlackList</h3>
+    {{!-- <div class ='x'> --}}
+
+    <div class='wrap row'>
+        {{!-- <ul class="list-group col-3">
+    {{#each companys}}
+    <li class="list-group-item list-group-item-secondary">{{this.name}}</li>
+    {{/each}}
+</ul> --}}
+        <ul class="list-group col-6">
+            {{#each companys}}
+            <a href="/company/{{this.name}}"></a>
+            <li class="list-group-item list-group-item-secondary">{{this.name}} <br>
+                {{this.address}}<br>{{this.status.cool}}Информация: <br>Очень плохая вилка,Хороший социальный пакет,кормят на халяву! </li>
+
+            {{/each}}
+
+        </ul>
+        <div id="map" class='x col-6'></div>
+    </div>
+
+
+    <script src="//cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.runtime.min.js"></script>
+    <script>
+
+
+        const loc = {{{ location }}};
+        const name = {{{ names }}};
+        //const adr = {{address}};
+        //console.log('data ===== ', typeof JSON.parse(data));
+        // console.log("======  ",{{obj.name}});
+        // console.log("======  ",{{name}});
+        // console.log("======  ",{{{obj.name}}});
+        // console.log("======  ",{{{name}}});
+        // console.log('+++',"{{obj.name}}");
+
+        function initMap() {
+            
+        console.log('data ===== ', loc);
+        console.log('data ===== ', name);
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: loc[0],
+                zoom: 8,
+                disableDefaultUI: false,
+                scrollwheel: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+            });
+            for(let i = 0 ; i < loc.length;i++) {
+
+            
+            marker = new google.maps.Marker({
+                position: loc[i],
+                map: map,
+                title: "Oleg Xorow!!"
+                /*animation: google.maps.Animation.BOUNCE */
+            })
+            let str = name[i];
+            let contentt = `<div id="content">${str}</div>`
+            infowindow = new google.maps.InfoWindow({
+                content: contentt,
+            });
+            infowindow.setContent(contentt);
+            infowindow.open(map, marker);
+            }
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
+/*
+            let mapDiv = document.getElementById('map');
+            google.maps.event.addDomListener(mapDiv, 'click', function () {
+                window.location.href = '/api'
+            });
+            */
+        }
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuq-AhLoLeNZqLEQ0Qo0DOx3Wr2YBJLeg&callback=initMap"
+        async defer></script>
+    {{!-- </div> --}}
+</body>
+
+</html>

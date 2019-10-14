@@ -1,0 +1,25 @@
+<h3>Registration</h3> 
+
+<form id="regform" action="/registration" method="POST">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Username</label>
+      <input type="text" class="form-control" name="username" id="validationDefault01" placeholder="Must be unique" value="" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault02">Password</label>
+      <input type="password" class="form-control" name="password" id="validationDefault02" placeholder="A secure one" value="" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefaultEmail">Email</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend2">@</span>
+        </div>
+        <input type="text" class="form-control" name="email" id="validationDefaultEmail" placeholder="traveler@world.com" aria-describedby="inputGroupPrepend2" required>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-outline-secondary btn-block">Sign up</button>
+</form>
+<div class ="error">{{error}}</div>

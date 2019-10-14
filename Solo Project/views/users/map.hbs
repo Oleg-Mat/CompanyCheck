@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="api">
+
+<head>
+  <title>Simple Map</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+
+      height: 70vh;
+      margin-right: 0 2%;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      margin: 0 2%;
+    }
+
+    .wrap ul li {
+      padding: 10px 30px;
+      box-sizing: border-box;
+      margin-bottom: 5px;
+
+
+    }
+
+    /*
+    
+    .wrap ul li {
+     
+      height: calc(70vh/8) ;
+      когда хочу выровнять элементы с картой
+     */
+
+  
+
+}
+  </style>
+</head>
+
+<body>
+
+  <h3 class="mt-2">Channels</h3>
+  {{!-- <div class ='x'> --}}
+
+  <div class='wrap row'>
+    <ul class="list-group col-6">
+
+      <li class="list-group-item list-group-item-secondary">XXXXX</li>
+      <li class="list-group-item list-group-item-secondary">XXXXX</li>
+      <li class="list-group-item list-group-item-secondary">XXXXX</li>
+      <li class="list-group-item list-group-item-secondary">XXXXX</li>
+      <li class="list-group-item list-group-item-secondary">XXXXX</li>
+      <li class="list-group-item list-group-item-secondary">XXXXX</li>
+      <li class="list-group-item list-group-item-secondary">XXXXX</li>
+      <li class="list-group-item list-group-item-secondary">XXXXX</li>
+
+
+
+      {{!-- <li> <a href="channel/{{name}}">{{name}}</a> </li> --}}
+
+    </ul>
+    <div id="map" class='x col-6'></div>
+  </div>
+
+
+  <script>
+    /*
+   const lat = "{{lat}}";
+   const lng = "{{lng}}"
+   console.log('===',lat);
+   console.log('===',lng);
+   const cords = {
+     lat: "{{lat}}",
+     lng: "{{lng}}"
+   }
+*/
+    // console.log("======  ",{{obj.name}});
+    // console.log("======  ",{{name}});
+    // console.log("======  ",{{{obj.name}}});
+    // console.log("======  ",{{{name}}});
+   // console.log('+++',"{{obj.name}}");
+   
+
+  const data = {{arr}};
+  //console.log('data ===== ', typeof JSON.parse(data));
+  console.log('data ===== ', data);
+ 
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 55.7092423, lng: 37.5932791 },
+        zoom: 8,
+        disableDefaultUI: false,
+        scrollwheel: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+      });
+      
+      marker = new google.maps.Marker({
+        position: { lat: 55.7092423, lng: 37.5932791 },
+        map: map,
+        title:"Халявная кормёжка"
+        /*animation: google.maps.Animation.BOUNCE */
+      })
+      let str = "г.Москва , ул.Пушкина дом.Калатушкина!";
+      let contentt = `<div id="content">${str}</div>`
+      infowindow = new google.maps.InfoWindow({
+        content:contentt,
+      });
+    infowindow.setContent(contentt);
+      
+
+      marker.addListener('click', function () {
+        infowindow.open(map, marker);
+      });
+
+      let mapDiv = document.getElementById('map');
+      google.maps.event.addDomListener(mapDiv, 'click', function() {
+          window.location.href = '/api'
+        });
+    }
+
+
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuq-AhLoLeNZqLEQ0Qo0DOx3Wr2YBJLeg&callback=initMap"
+    async defer></script>
+  {{!-- </div> --}}
+</body>
+
+</html>

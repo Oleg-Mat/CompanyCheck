@@ -1,0 +1,12 @@
+<h3 class="mt-2">Channels</h3>
+
+<ul class="list-group col-3">
+    {{#each channels}}
+    <li class="list-group-item list-group-item-secondary">{{name}}</li>
+    {{!-- <li> <a href="channel/{{name}}">{{name}}</a> </li> --}}
+    {{/each}}
+</ul>
+
+<form  name ='newform' action="/update">
+       <button class ="newArticle">Update</button>
+    </form>

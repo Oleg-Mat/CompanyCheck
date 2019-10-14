@@ -1,0 +1,38 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:white;
+}
+
+a {
+  color:darkorange;
+}
+
+.justify-content-end {
+  /* background-color: slategrey; */
+  border-radius: 5px;
+}
+
+#welcome-bar {
+  color: red;
+}
+
+#logo {
+  max-width: 30%;
+  max-height: auto;
+  position: absolute;
+  top: 33%;
+  left: 33%;
+}
+.error {
+
+  text-align: center;
+  position: relative;
+  color:red;
+  font-size: 250%;
+  position:absolute;
+  top:300px;
+  right: 0;
+  left: 0;
+ 
+}
